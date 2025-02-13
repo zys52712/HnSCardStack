@@ -1,0 +1,436 @@
+body {
+	--main-color-light: hsl(var(--main-color),calc(71% + 15%));
+	--main-color-light-half-opacity: hsla(var(--main-color),calc(71% + 25%), 0.5);
+
+	--max-content-width: calc(100vw - 40px);
+	--main-color: 71, 61%;
+	--l: 71%;
+	--l-t: 10%;
+	--l-dark: calc(var(--l) - 50%);
+	--hsl-main: var(--main-color), var(--l);
+	--hsl-dark: var(--main-color), var(--l-t);
+	--button-color: hsl(var(--hsl-main));
+	--button-highlight-color: hsl(var(--hsl-dark));
+	--button-text-color: hsl(var(--hsl-dark));
+	--button-click-color: #e3e3e3;
+	--button-click-text-color: hsl(var(--hsl-main));
+	--button-color-half-opacity: hsla(var(--hsl-main), 0.5);
+	--text-color-half-opacity: hsla(var(--hsl-dark), 0.5);
+	--background-color: hsl(var(--main-color),calc(71% - 10%));
+	--background-color-copy: hsl(var(--main-color),calc(71% - 10%));
+	--background-color-half-opacity: hsla(var(--main-color),calc(71% - 10%), 0.3);
+	--drop-shadow: drop-shadow(1px 1px 2px hsla(var(--main-color), calc(71% - 50%),0.2));
+	-webkit-tap-highlight-color: transparent;
+	background: var(--background-color);
+	margin: 0;
+	color: var(--button-text-color);
+
+	& * {
+		font-family: Zen Kaku Gothic New, sans-serif;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	& bold {
+		font-weight: bold;
+	}
+}
+
+header, footer {
+	text-align: center;
+}
+
+header h1 {
+	margin-bottom: 0;
+}
+
+main {
+	padding: 20px;
+	display: grid;
+	gap: 20px;
+}
+
+.main-wrapper {
+	min-height: 500px;
+	padding: 20px;
+	border-radius: 5px;
+	filter: var(--drop-shadow);
+	background: var(--button-color);
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	overflow-x: auto;
+}
+
+.cards {
+	display: flex;
+	gap: 25px;
+	max-width: calc(100vw - 80px);
+	overflow-x: auto;
+	padding-bottom: 10px;
+    margin-bottom: -10px;
+
+	& .card {
+		cursor: pointer;
+		padding: 20px;
+		width: 260px;
+		min-width: 260px;
+		height: 375px;
+		background: var(--main-color-light);
+		filter: var(--drop-shadow);
+		border-radius: 2px;
+		position: relative;
+		margin: 2px;
+		transition: transform 0.3s;
+
+		&:hover {
+			border: 2px solid var(--text-color-half-opacity);
+			margin: 0;
+		}
+
+		&.selected {
+			border: 2px solid var(--button-text-color);
+			margin: 0;
+		}
+		
+		& h3 {
+			text-transform: uppercase;
+			margin: 0 0 16px;
+			font-size: 24px;
+		}
+		
+		& p {
+			font-size: 14px;
+		}
+
+		.cost {
+			position: absolute;
+			width: inherit;
+			bottom: 0;
+			left: 0;
+			padding: 10px 20px 20px;
+			margin: 0;
+			background: var(--main-color-light-half-opacity);
+			border-top: 1px solid hsla(var(--hsl-dark), 0.2);
+			backdrop-filter: blur(5px);
+		}
+
+		& .card-type {
+			position: absolute;
+			right: 0;
+			top: 0;
+			background: black;
+			display: flex;
+			color: white;
+			padding: 5px;
+			font-size: 12px;
+			line-height: 12px;
+		}
+
+		& .time-amount {
+			background: black;
+			display: inline-flex;
+			color: white;
+			font-weight: 700;
+			padding: 0 5px 3px;
+			border-radius: 2px;
+		}
+
+		& .time-bonus {
+			display: grid;
+			justify-content: center;
+			position: absolute;
+			bottom: 25px;
+			left: 50%;
+			transform: translateX(-50%);
+			gap: 5px;
+			padding: 10px 15px 15px;
+			border: 2px solid var(--button-text-color);
+			border-radius: 10px;
+
+			& span {
+				text-align: center;
+			}
+
+			& span:first-child {
+				font-weight: 700;
+				font-size: 48px;
+				line-height: 48px;
+			}
+
+			& span:last-child {
+				font-size: 36px;
+				line-height: 36px;
+			}
+		}
+	}
+}
+
+.container label,
+button {
+	border: none;
+	border-radius: 2px;
+	color: var(--button-text-color);
+	cursor: pointer;
+	filter: var(--drop-shadow);
+	flex: 1 0 17%;
+	font-size: 20px;
+	line-height: 25px;
+	margin: auto;
+	text-align: center;
+	padding: 10px 20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	white-space: nowrap;
+	font-weight: 500;
+
+	animation-fill-mode: forwards;
+	background-color: var(--background-color);
+	background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+	background-position: 100% 100%;
+	background-size: 210% 210%;
+	transition: background .2s, transform .2s;
+
+	&:hover {
+		--button-text-color: var(--button-click-text-color);
+		background-color: var(--button-click-color);
+		background-position: 0 0;
+		transform: translate(-1px, -1px);
+	}
+
+	input {
+		display: none;
+	}
+}
+
+.container {
+	display: grid;
+	background: var(--main-color-light);
+	padding: 15px 20px;
+	border-radius: 2px;
+	width: fit-content;
+	max-width: calc(100vw - 120px);
+	overflow: auto;
+	gap: 20px;
+
+	@media screen and (min-width: 800px) {
+		grid-template-columns: repeat(1, auto);
+
+		&:has(:nth-child(2)) {
+			grid-template-columns: repeat(2, auto);
+		}
+	
+		&:has(:nth-child(3)) {
+			grid-template-columns: repeat(3, auto);
+		}
+	
+		&:has(:nth-child(4)) {
+			grid-template-columns: repeat(4, auto);
+		}
+	
+		&:has(:nth-child(5)) {
+			grid-template-columns: repeat(5, auto);
+		}
+	
+		&:has(:nth-child(6)) {
+			grid-template-columns: repeat(6, auto);
+		}
+	}
+
+	&.controls label:has(.ph),
+	&.controls button:has(.ph) {
+		padding: 15px;
+		font-size: 30px;
+		display: grid;
+		place-content: center;
+	}
+
+	&.controls button {
+		padding: 10px;
+		display: grid;
+		place-content: center;
+		width: 60px;
+		height: 60px;
+		line-height: 24px;
+		font-size: 24px;
+	}
+
+	@media screen and (max-width: 799px) {
+		display: flex;
+		flex-wrap: wrap;
+
+		button, label {
+			padding: 10px;
+		}
+	}
+}
+
+.controls-wrapper {
+	display: flex;
+	gap: 15px;
+	
+	& .container {
+		align-items: center;
+	
+		& h2 {
+			margin: 0;
+		}
+	
+		& p {
+			margin-top: -4px;
+		}
+	}
+}
+
+.stats {
+
+	& p {
+		margin: 0;
+		font-size: 22px;
+	}
+}
+
+.card-draw-container{
+	position: fixed;
+	z-index: 1;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+	opacity: 0;
+	gap: 0;
+	padding: 0;
+	top: 0;
+	left: 0;
+	place-content: center;
+	align-items: center;
+	backdrop-filter: blur(0px);
+	transition: all 1s;
+	
+	h1 {
+		margin-top: 0;
+	}
+	
+	& .cards {
+		transition: transform 0.5s;
+		transform: translateY(50px);
+		padding-top: 50px;
+		margin-bottom: 40px;
+		align-self: center;
+		perspective: 12000px;
+
+		.card {
+			transition: transform 0.5s, opacity .5s;
+			transform: rotateY(90deg);
+			opacity: 0;
+		}
+	}
+
+	&.active {
+		opacity: 1;
+		backdrop-filter: blur(10px);
+		background: var(--background-color-half-opacity);
+		opacity: 1;
+		pointer-events: initial;
+	
+		.cards {
+			transform: translateY(0px);
+
+			.card {
+				transform: rotateY(0deg);
+				transition-delay: 0.2s;
+				opacity: 1
+			}
+
+			.card.selected {
+				transform: translateY(-20px);
+				transition-delay: 0s;
+			}
+		}
+	}
+}
+
+.editor {
+	& h2,
+	& ul {
+		margin: 0;
+	}
+}
+
+.editor-buttons {
+	grid-template-columns: repeat(3, auto);
+}
+
+#editorContainer {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, min(525px, 100vw - 80px));
+	gap: 20px;
+
+	h2, h3 {
+		margin: 0;
+	}
+
+	.item-editor {
+		background: var(--main-color-light);
+		padding: 15px;
+		display: grid;
+		position: relative;
+		align-content: baseline;
+		gap: 10px;
+		width: fit-content;
+		max-width: calc(100vw - 80px);
+		overflow: hidden;
+
+		&.deleted {
+			opacity: 0.5;
+		}
+
+		.editor-container {
+			display: grid;
+			grid-template-columns: 120px 375px;
+			transition: opacity .5s;
+			
+			& input,
+			& textarea,
+			& select {
+				border: none;
+				font-size: 16px;
+				padding: 6px;
+			}
+
+			& select {
+				font-size: 16px;
+				padding: 6px 4px;
+			}
+		}
+
+		label {
+			margin-top: 8px;
+		}
+
+		& .remove-card {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 36px;
+			height: 36px;
+			font-size: 28px;
+			display: grid;
+			place-content: center;
+			color: var(--button-text-color);
+			cursor: pointer;
+
+			animation-fill-mode: forwards;
+			background-color: var(--background-color);
+			background-image: linear-gradient(to bottom right, var(--button-highlight-color) 49.5%, var(--background-color) 50%);
+			background-position: 100% 100%;
+			background-size: 210% 210%;
+			transition: background .2s, transform .2s;
+
+			&:hover {
+				--button-text-color: var(--button-click-text-color);
+				background-color: var(--button-click-color);
+				background-position: 0 0;
+			}
+		}
+	}
+}

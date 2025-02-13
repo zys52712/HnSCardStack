@@ -1,0 +1,58 @@
+[
+	{
+		"title": "Curse of Water Weight",
+		"description": "The seekers must aquire and arry 2L of water, if liquid is lost you are awarded <span class=\"time-amount\">15</span> minutes",
+		"type": "curse",
+		"requirement": "Lose 1 turn",
+		"count": 2
+	},
+	{
+		"title": "Haunted Chains",
+		"description": "Binds you in place.",
+		"type": "curse",
+		"requirement": "Cannot play next card",
+		"count": 2
+	},
+	{
+		"title": "Flame Strike",
+		"description": "Unleash a powerful fire attack.",
+		"type": "powerup",
+		"count": 2
+	},
+	{
+		"title": "Lightning Reflex",
+		"description": "React faster than ever.",
+		"type": "powerup",
+		"count": 2
+	},
+	{
+		"title": "Flame Strike",
+		"description": "Unleash a powerful fire attack.",
+		"type": "powerup",
+		"count": 2
+	},
+	{
+		"title": "Lightning Reflex",
+		"description": "React faster than ever.",
+		"type": "powerup",
+		"count": 2
+	},
+	{
+		"title": "Time Bonus",
+		"type": "time",
+		"bonusAmount": "5",
+		"count": 2
+	},
+	{
+		"title": "Time Bonus",
+		"type": "time",
+		"bonusAmount": "10",
+		"count": 2
+	},
+	{
+		"title": "Time Bonus",
+		"type": "time",
+		"bonusAmount": "30",
+		"count": 2
+	}
+]
