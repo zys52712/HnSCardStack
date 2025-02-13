@@ -39,8 +39,19 @@ header, footer {
 	text-align: center;
 }
 
-header h1 {
-	margin-bottom: 0;
+header {
+	background: var(--main-color-light);
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	button a {
+		color: unset;
+		text-decoration: none;
+	}
+	& h1 {
+		margin: 0;
+	}
 }
 
 main {
