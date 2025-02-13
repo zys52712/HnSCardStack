@@ -232,10 +232,7 @@ function loadFromLocalStorage() {
 
 document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
 
-
 /*
-
-
 function saveToLocalStorage() {
 	localStorage.setItem('deckData', {
 		deck: JSON.stringify(deck),
@@ -261,11 +258,8 @@ function loadFromLocalStorage() {
 	*/
 
 
-
-//EDITOR CODE
 let items = [];
 
-// Function to update item whenever an input changes
 function autoSave() {
 	const editors = document.querySelectorAll('.item-editor:not(.deleted)');
 	items = [];
@@ -300,7 +294,8 @@ function autoSave() {
 				bonusAmount: bonusAmount || 0,
 				count: count
 			};
-		} else if (type === 'powerup') {
+		}
+		else if (type === 'powerup') {
 			descriptionElement.closest('.editor-container').style.display = 'none';
 			requirementElement.closest('.editor-container').style.display = 'none';
 			bonusAmountElement.closest('.editor-container').style.display = 'none';
@@ -311,7 +306,8 @@ function autoSave() {
 				bonusAmount: bonusAmount || 0,
 				count: count
 			};
-		} else if (type === 'curse') {
+		}
+		else if (type === 'curse') {
 			bonusAmountElement.closest('.editor-container').style.display = 'none';
 
 			newItem = {
@@ -324,36 +320,30 @@ function autoSave() {
 			};
 		}
 
-		// Update the item in the array
 		items[index] = newItem;
 	});
 
 	items = items.sort((a, b) => {
         const order = { curse: 1, powerup: 2, time: 3 };
 
-        // If both items are "time" cards, sort by bonusAmount
         if (a.type === "time" && b.type === "time") {
             return a.bonusAmount - b.bonusAmount;
         }
 
-        // Otherwise, sort by type order
         return order[a.type] - order[b.type];
     });
 
 	items.sort((a, b) => {
         const typeOrder = { curse: 1, powerup: 2, time: 3 };
 
-        // Sort primarily by type order
         if (typeOrder[a.type] !== typeOrder[b.type]) {
             return typeOrder[a.type] - typeOrder[b.type];
         }
 
-        // If not a time card, sort alphabetically by title
         if (a.type !== 'time') {
             return a.title.localeCompare(b.title);
         }
 
-        // Time cards: sort by bonusAmount (ascending)
         return a.bonusAmount - b.bonusAmount;
     });
 
@@ -400,12 +390,10 @@ function addItem() {
       `;
 
 	editorContainer.appendChild(newEditor);
-	// Add autoSave event listeners to the new editor fields
 	newEditor.querySelectorAll('input, textarea, select').forEach((input) => {
 		input.addEventListener('input', autoSave);
 	});
 
-	// Auto save for the newly added editor
 	autoSave();
 }
 
@@ -417,7 +405,7 @@ function removeEditorCard(event) {
 
 function updateItemList() {
 	const list = document.getElementById('itemsList');
-	list.innerHTML = ''; // Clear current list
+	list.innerHTML = '';
 
 	items.forEach((item, index) => {
 		const li = document.createElement('li');
@@ -434,15 +422,11 @@ function updateItemList() {
 }
 
 function loadItems(data) {
-	// Clear existing editors
 	document.getElementById('editorContainer').innerHTML = '';
-
-	// Clear the items array
 	items = [];
 
-	// Create editor sections based on the JSON data
 	data.forEach(item => {
-		addItem();  // Create a new item editor
+		addItem();
 		const editors = document.querySelectorAll('.item-editor');
 		const lastEditor = editors[editors.length - 1];
 
@@ -453,7 +437,6 @@ function loadItems(data) {
 		lastEditor.querySelector('.bonusAmount').value = item.bonusAmount || '';
 		lastEditor.querySelector('.count').value = item.count || 1;
 
-		// Add the item to the items array after loading into the editor
 		autoSave();
 	});
 }
@@ -464,14 +447,12 @@ function downloadJSON() {
 		return;
 	}
 
-	// Prompt the user for a file name
 	const fileName = prompt('Name the JSON file:', 'cards.json');
 	if (!fileName) {
 		alert('File name is required!');
 		return;
 	}
 
-	// Ensure the file name ends with .json
 	const validFileName = fileName.endsWith('.json') ? fileName : `${fileName}.json`;
 
 	const json = JSON.stringify(items, null, 2);
@@ -507,7 +488,6 @@ function uploadJSON() {
 	reader.readAsText(file);
 }
 
-// Set event listeners for existing inputs on page load
 document.querySelectorAll('.item-editor input, .item-editor textarea, .item-editor select').forEach((input) => {
 	input.addEventListener('input', autoSave);
 });
