@@ -1,0 +1,84 @@
+[
+  {
+    "title": "Blessing of the determined brain",
+    "description": "Choose two questions in different categories. The seekers must ask those questions first before asking anything else in the category.",
+    "type": "curse",
+    "requirement": "Discard your hand",
+    "bonusAmount": 0,
+    "count": 1
+  },
+  {
+    "title": "Blessing of the frozen dot",
+    "description": "Place a point on the map at least 1,000 feet from where the seekers are currently standing.<br><br>If, in exactly 15 minutes, they are within 250 feet of that point, they must consume ice cream before asking another question",
+    "type": "curse",
+    "requirement": "Seekers must be at least 10 miles (16km) away.",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Blessing of the inviting door",
+    "description": "For the next hour, seekers must roll a 4 or higher to walk by any doorway to a public location within 10 feet. Else, stay at the location for at least 5 minutes before continuing.",
+    "type": "curse",
+    "requirement": "Discard a powerup",
+    "bonusAmount": 0,
+    "count": 1
+  },
+  {
+    "title": "Curse of public opinion",
+    "description": "Before asking another question, seekers must visit any public point of interest without doing any research. If the location has a Google review of under 4.0, or has less than 10 reviews, you are awarded an extra <span class=\"time-amount\">30</span> minutes.",
+    "type": "curse",
+    "requirement": "The seekers' next question is free.",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Curse of the photographer",
+    "description": "For the next hour, seekers must take a picture of where they will be within the minute in order to move. If seekers move without taking a picture, or are not at where the picture shows within the minute, you are awarded an extra <span class=\"time-amount\">30</span> minutes.",
+    "type": "curse",
+    "requirement": "The seekers' next question is free.",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Discard 1, Draw 2",
+    "type": "powerup",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Discard 2, Draw 3",
+    "type": "powerup",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Randomize Question",
+    "type": "powerup",
+    "bonusAmount": 0,
+    "count": 2
+  },
+  {
+    "title": "Time Bonus",
+    "type": "time",
+    "bonusAmount": 2,
+    "count": 8
+  },
+  {
+    "title": "Time Bonus",
+    "type": "time",
+    "bonusAmount": 10,
+    "count": 3
+  },
+  {
+    "title": "Time Bonus",
+    "type": "time",
+    "bonusAmount": 15,
+    "count": 2
+  },
+  {
+    "title": "Time Bonus",
+    "type": "time",
+    "bonusAmount": 30,
+    "count": 1
+  }
+]
